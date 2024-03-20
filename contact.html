@@ -6,6 +6,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="'stylesheet">
+
+
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
     rel="stylesheet">
 
@@ -95,7 +98,7 @@
                 <div class="icon mr-3">
                   <span class="icon-mobile-phone"></span>
                 </div>
-                <p><span>Phone:</span> <a href="tel://1234567920">+998 (98) 177-00-00</a></p>
+                <p><span>Phone:</span> <a href="tel://1234567920">+998 (33) 401-33-31</a></p>
               </div>
             </div>
             <div class="col-md-12">
@@ -103,62 +106,57 @@
                 <div class="icon mr-3">
                   <span class="icon-envelope-o"></span>
                 </div>
-                <p><span>Email:</span> <a href="mailto:info@yoursite.com">milliyavtoindex@gmail.com</a></p>
+                <p><span>Email:</span> <a href="mailto:info@yoursite.com">milliyavto31@gmail.com</a></p>
               </div>
             </div>
           </div>
         </div>
         <div class="col-md-8 block-9 mb-md-5">
-          <!-- <form action="#" class="bg-light p-5 contact-form" id="contactForm" onsubmit=" return sendtelegram()">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Ismingiz" name="name" id="name" required>
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="Email manzilingiz" name="email" id="email" required>
-            </div>
-            <div class="form-group">
-              <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Izoh qoldiring" required></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Yuborish" class="btn btn-primary py-3 px-5" id="btn">
-            </div>
-          </form>
-          <script src="sendtelegram.js"></script> -->
 
-          <div class="form">
-            <form action="" onsubmit=" return sendtelegram()">
-                <input type="text" name="name" id="name" placeholder="Ismingiz" required>
-                <input type="email" name="email" id="email" placeholder="Email manzilingiz" required> <br> <br>
-                <textarea name="message" id="message" cols="45" rows="10" placeholder="Tel raqam va izoh uchun" required></textarea> <br> <br>
-                <input type="submit" value="Yuborish" id="btn">
+          <div class="wrapper">
+            <form action="" id="tg" class="telegram-form">
+              <h1 class="madal-title" style="font-family:Arial, Helvetica, sans-serif;">Malumot qoldirish</h1>
+              <div class="input-box">
+                <input type="text" name="name" placeholder="Имя" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="lastname" placeholder="Фамилия" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="avto" placeholder="Интересная машина" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="number" placeholder="+998(--)" required>
+            </div>
+              <input type="submit" value="Yuborish" id="btn">
             </form>
-        </div>
-        <style>
-          .form {
+          </div>
+          <style>
+            .telegram-form {
               max-width: 500px;
               margin: 0 auto;
               padding: 20px;
               border: 1px solid #ccc;
               border-radius: 5px;
               background-color: #f9f9f9;
-          }
-      
-          .form input[type="text"],
-          .form input[type="email"],
-          .form textarea {
+            }
+
+            .telegram-form input[type="text"],
+            .telegram-form input[type="email"],
+            .telegram-form textarea {
               width: 100%;
               padding: 10px;
               margin-bottom: 10px;
               border: 1px solid #ccc;
               border-radius: 3px;
               box-sizing: border-box;
-          }
-      
-          .form textarea {
+            }
+
+            .telegram-form textarea {
               resize: vertical;
-          }
-      
-          .form input[type="submit"] {
+            }
+
+            .telegram-form input[type="submit"] {
               width: 100%;
               padding: 10px;
               border: none;
@@ -166,51 +164,45 @@
               background-color: #007bff;
               color: white;
               cursor: pointer;
-          }
-      
-          .form input[type="submit"]:hover {
+            }
+
+            .telegram-form input[type="submit"]:hover {
               background-color: #0056b3;
-          }
-      </style>
-        <script src="sendtelegram.js"></script>
+            }
+          </style>
+           <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
 
-          <script>
-            document.getElementById('contactForm').addEventListener('submit', function (event) {
-              event.preventDefault();
 
-              const formData = new FormData(this);
-
-              fetch('https://api.telegram.org/bot6698766339:AAGoxSpj7MsABKVQwkdLxKwPdMYyc7HSxnI/sendMessage', {
-                method: 'POST',
-                body: formData
-              })
-                .then(response => {
-                  if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                  }
-                  return response.json();
+           <script>
+            const TOKEN = "7079925059:AAFf9njaR2aeyH-j4B1xLkVbyHi8BpdOBzg"
+            const CHAT_ID = "584323689"
+            const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`
+    
+            document.getElementById('tg').addEventListener('submit', function(e){
+                e.preventDefault()
+    
+                let message = '⚜️⚜️⚜️ Новый пользователь ⚜️⚜️⚜️ \n'
+                message += `🗣 Имя :  ${this.name.value} \n` 
+                message += `🗣 Фамилия :  ${this.lastname.value} \n`
+                message += `🚗 Интересная машина :  ${this.avto.value} \n`
+                message += `📞 Номер телефона :  ${this.number.value} \n`
+    
+                axios.post(URI_API, {
+                    chat_id: CHAT_ID,
+                    pares_mode: 'html',
+                    text: message
                 })
-                .then(data => {
-                  do {
-                    console.log(data);
-                  } while (condition);
-                  alert('Message sent successfully!');
-                })
-                .catch(error => {
-                  console.error('There was a problem with your fetch operation:', error);
-                  alert('Failed to send message. Please try again later.');
-                });
-            });
-          </script>
+            })
+        </script>
 
 
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-md-12">
-          <h1>This is my Google Maps web page</h1>
+          <h1>Bizning manzil</h1>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.274257380938!2d-70.56068388481569!3d41.45496659976631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e52963ac45bbcb%3A0xf05e8d125e82af10!2sDos%20Mas!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d750.4592357773404!2d69.23468681964158!3d41.203528357220705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d41.203517!2d69.235221!4m3!3m2!1d41.203480299999995!2d69.2351789!5e0!3m2!1sru!2s!4v1709745932587!5m2!1sru!2s"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
@@ -263,11 +255,11 @@
             <h2 class="ftco-heading-2">Have a Questions?</h2>
             <div class="block-23 mb-3">
               <ul>
-                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San
-                    Francisco, California, USA</span></li>
-                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                <li><span class="icon icon-map-marker"></span><span class="text">Milliy Avto Index quyidagi manzil
+                    boʻyicha Toshkent, Yangihayot tumani, Yangi Qipchoq mahallasi, Turon</span></li>
+                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+998 (33) 401-33-33</span></a></li>
                 <li><a href="#"><span class="icon icon-envelope"></span><span
-                      class="text">info@yourdomain.com</span></a></li>
+                      class="text">milliyavtoindex@gmail.com</span></a></li>
               </ul>
             </div>
           </div>
