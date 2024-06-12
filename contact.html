@@ -189,21 +189,53 @@
             const CHAT_ID = "584323689"
             const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`
     
-            document.getElementById('tg').addEventListener('submit', function(e){
-                e.preventDefault()
+            // document.getElementById('tg').addEventListener('submit', function(e){
+            //     e.preventDefault()
     
-                let message = '⚜️⚜️⚜️ Получатель ⚜️⚜️⚜️ \n'
-                message += `🗣 Имя :  ${this.name.value} \n` 
-                message += `🗣 Фамилия :  ${this.lastname.value} \n`
-                message += `🚗 Интересная машина :  ${this.avto.value} \n`
-                message += `📞 Номер телефона :  ${this.number.value} \n`
+            //     let message = '⚜️⚜️⚜️ Получатель ⚜️⚜️⚜️ \n'
+            //     message += `🗣 Имя :  ${this.name.value} \n` 
+            //     message += `🗣 Фамилия :  ${this.lastname.value} \n`
+            //     message += `🚗 Интересная машина :  ${this.avto.value} \n`
+            //     message += `📞 Номер телефона :  ${this.number.value} \n`
     
-                axios.post(URI_API, {
-                    chat_id: CHAT_ID,
-                    pares_mode: 'html',
-                    text: message
-                })
-            })
+            //     axios.post(URI_API, {
+            //         chat_id: CHAT_ID,
+            //         pares_mode: 'html',
+            //         text: message
+            //     })
+            // })
+
+
+
+
+
+
+            document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('tg').addEventListener('submit', function(e){
+        e.preventDefault();
+
+        let message = '⚜️⚜️⚜️ Получатель ⚜️⚜️⚜️ \n';
+        message += `🗣 Имя :  ${this.name.value} \n`; 
+        message += `🗣 Фамилия :  ${this.lastname.value} \n`;
+        message += `🚗 Интересная машина :  ${this.avto.value} \n`;
+        message += `📞 Номер телефона :  ${this.number.value} \n`;
+
+        axios.post(URI_API, {
+            chat_id: CHAT_ID,
+            parse_mode: 'html',
+            text: message
+        })
+        .then(response => {
+            // Malumotlar yuborilgandan so'ng, forma tozalansin
+            this.reset();
+        })
+        .catch(error => {
+            console.error('Xatolik yuz berdi:', error);
+        });
+    });
+});
+
+
         </script>
 
 
